@@ -1,0 +1,26 @@
+replicaCount: 1
+
+image:
+  repository: wooos/prometheus-custom-metrics-example
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 10Mi
+  limits:
+    cpu: 100m
+    memory: 100Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

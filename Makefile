@@ -1,7 +1,14 @@
-colon := :
+BINDIR := $(CURDIR)/bin
+BINNAME := prometheus-custom-metrics-example
+
+SRC        := $(shell find . -type f -name '*.go' -print)
 
 .PHONY: build
-build:
-	go build -o prometheus-custom-metrics-example main.go
-	docker build -t wooos/prometheus-custom-metrics-example$(colon)1.0.0 ./
-	docker push wooos/prometheus-custom-metrics-example$(colon)1.0.0
+build: $(BINDIR)/$(BINNAME)
+
+$(BINDIR)/$(BINNAME): $(SRC)
+	go build -o $(BINDIR)/$(BINNAME) ./cmd/example/
+
+.PHONY: clean
+clean:
+	rm -rf bin/
