@@ -3,12 +3,13 @@ Example for prometheus custom metrics
 
 ## Build
 
-```
-make build
+```bash
+$ make build
 ```
 
 ## Deploy
 
-```
-kubectl apply -f deployment.yaml
+```bash
+$ cd deployments/helm-charts/
+$ helm install prometheus-custom-metrics-example ./
 ```

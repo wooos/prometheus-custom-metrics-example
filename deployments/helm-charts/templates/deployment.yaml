@@ -13,6 +13,10 @@ spec:
     metadata:
       labels:
         {{- include "prometheus-custom-metrics-example.selectorLabels" . | nindent 8 }}
+      annotations:
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "8000"
+        prometheus.io/scrape: "true"
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
